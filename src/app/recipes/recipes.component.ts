@@ -8,15 +8,20 @@ import {Recipe} from './recipe.model';
 })
 export class RecipesComponent implements OnInit {
   recipes: Recipe[] = [
-    new Recipe('Taco', 'Bread wrapped around ingredients',
+    new Recipe('Taco 1', 'Bread wrapped around ingredients',
     'https://res.cloudinary.com/hellofresh/image/upload/f_auto,fl_lossy,q_80,w_auto:100:1280/v1/hellofresh_s3/image/pineapple-poblano-beef-tacos-b7badad1.jpg'),
-    new Recipe('Taco', 'Bread wrapped around ingredients',
+    new Recipe('Taco 2', 'Bread wrapped around ingredients',
       'https://res.cloudinary.com/hellofresh/image/upload/f_auto,fl_lossy,q_80,w_auto:100:1280/v1/hellofresh_s3/image/pineapple-poblano-beef-tacos-b7badad1.jpg')
   ];
+  selectedRecipe: Recipe;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  showRecipe(recipeElement) {
+    this.selectedRecipe = recipeElement;
   }
 
 }
