@@ -1,27 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import {Recipe} from './recipe.model';
+
+import { Recipe } from './recipe.model';
+import { RecipeService} from './recipe.service';
 
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
-  styleUrls: ['./recipes.component.css']
+  styleUrls: ['./recipes.component.css'],
+  providers: [RecipeService]
 })
 export class RecipesComponent implements OnInit {
-  recipes: Recipe[] = [
-    new Recipe('Taco 1', 'Bread wrapped around ingredients',
-    'https://res.cloudinary.com/hellofresh/image/upload/f_auto,fl_lossy,q_80,w_auto:100:1280/v1/hellofresh_s3/image/pineapple-poblano-beef-tacos-b7badad1.jpg'),
-    new Recipe('Taco 2', 'Bread wrapped around ingredients',
-      'https://res.cloudinary.com/hellofresh/image/upload/f_auto,fl_lossy,q_80,w_auto:100:1280/v1/hellofresh_s3/image/pineapple-poblano-beef-tacos-b7badad1.jpg')
-  ];
   selectedRecipe: Recipe;
+  recipes: Recipe[];
 
-  constructor() { }
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
+    this.recipeService.recipeSelected.subscribe(
+      (recipe: Recipe) => {
+        this.selectedRecipe = recipe;
+      }
+    );
   }
-
-  showRecipe(recipeElement) {
-    this.selectedRecipe = recipeElement;
-  }
-
 }
