@@ -17,7 +17,7 @@ import {CoreModule} from './core/core.module';
     AuthModule,
     ShoppingListModule,
     SharedModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'shopping-list'}),
     HttpClientModule,
     AppRoutingModule,
   ],

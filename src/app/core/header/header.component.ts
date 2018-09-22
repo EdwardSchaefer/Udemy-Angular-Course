@@ -8,7 +8,7 @@ import { HttpEvent } from '@angular/common/http';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent {
-  constructor(private dataStorageService: DataStorageService, private authService: AuthService) {}
+  constructor(private dataStorageService: DataStorageService, public authService: AuthService) {}
   onSave() {
     this.dataStorageService.storeRecipes().subscribe(
       (response: HttpEvent<Object>) => console.log(response)

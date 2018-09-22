@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 export class AuthService {
   token: string;
 
-  constructor(private router: Router) {}
+  constructor(public router: Router) {}
 
   signupUser(email: string, password: string) {
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(
@@ -20,9 +20,9 @@ export class AuthService {
         this.router.navigate(['/']);
         firebase.auth().currentUser.getIdToken().then(
           (token: string) => this.token = token
-        )
+        );
       }
-    )
+    );
   }
 
   getIdToken() {
